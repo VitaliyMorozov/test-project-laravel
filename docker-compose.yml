@@ -1,0 +1,65 @@
+version: '2.1'
+services:
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.local
+      args:
+        hostUID: 1000
+        hostGID: 1000
+    image: test-project-web
+    hostname: test-project-web
+    container_name: test-project-web
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    environment:
+      APP_ENV: local
+      PHP_IDE_CONFIG: serverName=test-project.docker
+      COMPOSER_HOME: /home/www/.composer
+    labels:
+      SERVICE_NAME: test-project-web
+      SERVICE_80_NAME: test-project-web
+      SERVICE_443_NAME: test-project-web
+    volumes:
+    - .:/home/www/app
+    - ~/.composer:/home/www/.composer
+
+  db:
+    image: mysql:5.7
+    hostname: test-project-db
+    container_name: test-project-db
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: test-project
+      MYSQL_USER: user
+      MYSQL_PASSWORD: secret
+    labels:
+      SERVICE_NAME: test-project-db
+    healthcheck:
+      test: "/usr/bin/mysql --user=user --password=secret --execute \"SHOW DATABASES;\""
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:alpine
+    container_name: test-project-redis
+    labels:
+      SERVICE_NAME: test-project-redis
+
+  build-static:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.nodejs
+    image: test-project-nodejs
+    hostname: test-project-nodejs
+    container_name: test-project-nodejs
+    mem_limit: 536870912
+#    user: node
+    volumes:
+    - ./:/home/www/app/
+    command: /bin/sh -c 'sh /static_build.sh'
