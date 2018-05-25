@@ -12,4 +12,6 @@ class ModelSpareParts extends Model
      * @var string
      */
     protected $table = 'ModelSpareParts';
+
+    public $timestamps = false;
 }

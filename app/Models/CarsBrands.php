@@ -12,4 +12,6 @@ class CarsBrands extends Model
      * @var string
      */
     protected $table = 'CarsBrands';
+
+    public $timestamps = false;
 }

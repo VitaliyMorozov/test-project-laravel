@@ -43,6 +43,7 @@ class CreateTestProjectDb extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('categoryID');
             $table->string('description', 255)->nullable();
+            $table->string('vendorCode', 100)->nullable();
 
             $table->foreign('categoryID')->references('id')->on('SparePartCategory')->onDelete('cascade');
         });

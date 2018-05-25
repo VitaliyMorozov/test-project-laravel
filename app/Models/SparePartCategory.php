@@ -12,4 +12,6 @@ class SparePartCategory extends Model
      * @var string
      */
     protected $table = 'SparePartCategory';
+
+    public $timestamps = false;
 }

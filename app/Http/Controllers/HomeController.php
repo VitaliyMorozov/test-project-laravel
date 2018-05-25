@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use Saritasa\Laravel\Controllers\BaseController;
+use App\Models;
 
 /**
  * Controller for home page.
@@ -17,6 +18,10 @@ class HomeController extends BaseController
      */
     public function index(): View
     {
-        return view('home.index');
+        $brands = Models\CarsBrands::all();
+
+        return view('home.index', [
+            'brands' => $brands
+        ]);
     }
 }

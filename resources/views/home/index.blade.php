@@ -6,6 +6,9 @@
 
 @section('content')
     <div>
-        Hello World
+        @foreach ($brands as $brand)
+            {{$brand['brand']}}
+
+        @endforeach
     </div>
 @endsection

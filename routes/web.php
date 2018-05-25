@@ -26,7 +26,7 @@ $web->resource('markup', MarkupController::class, [
     'get' => MarkupController::getMarkupMethods()
 ]);
 
-Route::any('admin/{all?}', 'AdminController@index')->where('all', '.+');
+Route::any('/', 'HomeController@index')->where('all', '.+');
 
 /*
 // Admin Panel

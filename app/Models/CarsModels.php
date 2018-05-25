@@ -12,4 +12,6 @@ class CarsModels extends Model
      * @var string
      */
     protected $table = 'CarsModels';
+
+    public $timestamps = false;
 }

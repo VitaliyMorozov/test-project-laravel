@@ -12,4 +12,6 @@ class ModelGeneration extends Model
      * @var string
      */
     protected $table = 'ModelGeneration';
+
+    public $timestamps = false;
 }
