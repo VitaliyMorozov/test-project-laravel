@@ -5,10 +5,18 @@
 @endsection
 
 @section('content')
-    <div>
-        @foreach ($brands as $brand)
-            {{$brand['brand']}}
-
-        @endforeach
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-body table-responsive">
+                            <router-view name="brandsIndex"></router-view>
+                            <router-view></router-view>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
     </div>
 @endsection
