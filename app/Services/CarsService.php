@@ -7,6 +7,8 @@ use App\Repositories\CarRepository;
 class CarService
 {
     /**
+     * Cars repository.
+     *
      * @var CarRepository
      */
     protected $carRepo;
@@ -17,19 +19,23 @@ class CarService
     }
 
     /**
-     * @param $id a car model generation identifier
+     * Get categories by generation ID.
+     *
+     * @param $id int Identifier of car model generation
      * @return \Illuminate\Support\Collection
      */
-    public function getCategoriesByGenerationID($id)
+    public function getCategoriesByGenerationID(int $id)
     {
         return $this->carRepo->getCategoriesByGenerationID($id);
     }
 
     /**
-     * @param $params
+     * Get spare parts by generation.
+     *
+     * @param $params array
      * @return \Illuminate\Support\Collection
      */
-    public function getSparePartsByGeneration($params)
+    public function getSparePartsByGeneration(array $params)
     {
         return $this->carRepo->getSparePartsByGeneration($params);
     }

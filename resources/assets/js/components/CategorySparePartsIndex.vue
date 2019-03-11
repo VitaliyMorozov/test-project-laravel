@@ -19,16 +19,16 @@
 
 <script>
   export default {
-    data: function () {
+    data() {
       return {
         categories: [],
         generationID: null,
       };
     },
     mounted() {
-      let app = this;
+      const app = this;
       app.generationID = app.$route.params.id;
-      this.$http.get(`/api/categorySpareParts/${app.generationID}`).then(function(response) {
+      this.$http.get(`/api/categorySpareParts/${app.generationID}`).then((response) => {
         app.categories = response.body;
       });
     },

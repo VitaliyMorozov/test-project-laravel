@@ -18,6 +18,7 @@
     "saritasa/laravel-notifications-api": "^1.0",
     "saritasa/laravel-middleware": "^1.0",
     "saritasa/roles-simple": "^1.0",
+    "saritasa/laravel-tools": "^1.0",
     "tymon/jwt-auth": "1.0.*@dev"
   },
   "require-dev": {

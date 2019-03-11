@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div id="app">
+    <div id="app" data-app="true" class="application theme--light">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
@@ -17,6 +17,6 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
 @endsection

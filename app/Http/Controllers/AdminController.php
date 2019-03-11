@@ -17,6 +17,6 @@ class AdminController extends BaseController
      */
     public function index(): View
     {
-        return view('layouts/admin');
+        return view('admin/admin');
     }
 }

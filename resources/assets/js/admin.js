@@ -9,12 +9,8 @@ import $ from 'jquery';
 import './utils';
 import './pages/logoutComponent';
 
-import BrandsIndex from './components/BrandsIndex.vue';
-import BrandModelsIndex from './components/BrandModelsIndex.vue';
-import CategorySparePartsIndex from './components/CategorySparePartsIndex.vue';
-import SparePartsGenerationIndex from './components/SparePartsGenerationIndex.vue';
-/* import DashboardIndex from './components/admin/DashboardIndex.vue';
-import AdminBrandsViewIndex from './components/admin/BrandsViewIndex.vue'; */
+import DashboardIndex from './components/admin/DashboardIndex.vue';
+import AdminBrandsViewIndex from './components/admin/BrandsViewIndex.vue';
 
 window.jQuery = $;
 Vue.use(VueResource);
@@ -33,10 +29,8 @@ window.Vue = require('vue');
 window.Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: BrandsIndex, name: 'brandsIndex' },
-  { path: '/models/:id', component: BrandModelsIndex, name: 'brandModelsIndex' },
-  { path: '/category/:id', component: CategorySparePartsIndex, name: 'categorySparePartsIndex' },
-  { path: '/spareparts/:generationID', component: SparePartsGenerationIndex, name: 'sparePartsGenerationIndex' },
+  { path: '/', component: DashboardIndex, name: 'dashboardIndex' },
+  { path: '/brands', component: AdminBrandsViewIndex, name: 'adminBrandsViewIndex' },
 ];
 
 const router = new VueRouter({
@@ -44,4 +38,3 @@ const router = new VueRouter({
 });
 
 new Vue({ router }).$mount('#app');
-

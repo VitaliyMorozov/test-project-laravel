@@ -23,10 +23,10 @@
 
 <link media="all" type="text/css" rel="stylesheet" href="{{ mix('/assets/styles/app.css') }}">
 @yield('additional.css')
+<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+<script src="{{ mix('/assets/js/admin.js') }}"></script>
 
-<script src="{{ mix('/assets/js/app.js') }}"></script>
-
-@if (config('app.env') == 'local' && !request()->isSecure())
+@if (config('app.env') == 'local' && !request()->isSecure()){?>
 <script src="http://localhost:35729/livereload.js"></script>
 @endif
 

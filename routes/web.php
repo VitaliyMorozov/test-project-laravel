@@ -28,16 +28,12 @@ $web->resource('markup', MarkupController::class, [
 
 Route::any('/', 'HomeController@index')->where('all', '.+');
 
-/*
+
 // Admin Panel
+/*
 $router->group(['prefix' => 'admin', 'middleware' => ['auth', 'role:' . Roles::ADMIN]], function (Router $router) {
-
     $router->get('/', 'AdminController@main')->name('admin.main');
-
-    /*
-    // Manage Users
-    $router->group(['prefix' => 'users'], function (Router $router) {
-        $router->get('', 'AdminUsersController@index')->name('admin.users');
-        $router->get('{id}', 'AdminUsersController@show')->where('id', '\d+')->name('admin.userDetail');
-    });*/
-//});
+});*/
+Route::group(['prefix' => 'admin'], function () {
+	Route::get('/', 'AdminController@index');
+});

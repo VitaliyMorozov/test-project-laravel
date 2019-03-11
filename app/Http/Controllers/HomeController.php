@@ -19,7 +19,6 @@ class HomeController extends BaseController
     public function index(): View
     {
         $brands = Models\CarsBrands::all();
-
         return view('home.index', [
             'brands' => $brands
         ]);

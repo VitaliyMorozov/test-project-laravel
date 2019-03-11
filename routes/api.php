@@ -24,6 +24,7 @@ $api->version(config('api.version'), ['namespace' => 'App\Http\Controllers\Api\v
     $api->post('auth/password/reset', 'ForgotPasswordApiController@sendResetLinkEmail');
     $api->put('auth/password/reset', 'ResetPasswordApiController@reset');
     $api->get('brands', 'CarsController@brands');
+    $api->post('brands', 'CarsController@brandsSave');
     $api->get('models/{id}', 'CarsController@brandModels');
     $api->get('categorySpareParts/{id}', 'CarsController@categorySpareParts');
     $api->get('sparePartsGeneration/{generationID}', 'CarsController@sparePartsByGeneration');

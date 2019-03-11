@@ -26,14 +26,14 @@
 
 <script>
   export default {
-    data: function () {
+    data() {
       return {
         brands: [],
       };
     },
     mounted() {
-      let app = this;
-      this.$http.get('/api/brands').then(function(response) {
+      const app = this;
+      this.$http.get('/api/brands').then((response) => {
         app.brands = response.body;
       });
     },

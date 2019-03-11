@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use Saritasa\Laravel\Controllers\Api\JWTAuthApiController;
 use App\Models;
 use App\Services\CarService;
+use App\Http\Requests\BrandsRequest;
 
 class CarsController extends JWTAuthApiController
 {
     /**
+     * Service to work with model cars.
+     *
      * @var CarService
      */
     protected $carService;
@@ -18,7 +21,10 @@ class CarsController extends JWTAuthApiController
     {
         $this->carService = $carService;
     }
+
     /**
+     * Get all brands.
+     *
      * @return Models\CarsBrands[]|\Illuminate\Database\Eloquent\Collection
      */
     public function brands()
@@ -26,13 +32,25 @@ class CarsController extends JWTAuthApiController
         return Models\CarsBrands::all();
     }
 
+
+    /**
+     * Save brand.
+     *
+     * @param BrandsRequest $request brand request to save
+     * @return Models\Dto\DtoBrands
+     */
+    public function brandsSave(BrandsRequest $request)
+    {
+        return $request->getBrandData();
+    }
+
     /**
      * Gel list of car models by brand.
      *
-     * @param $id a brand identifier
+     * @param $id int Identifier of brand
      * @return \Illuminate\Support\Collection
      */
-    public function brandModels($id)
+    public function brandModels(int $id)
     {
         return Models\CarsModels::with('generations')
             ->where('brandID', $id)
@@ -42,10 +60,10 @@ class CarsController extends JWTAuthApiController
     /**
      * Get list of category spare parts by the car model generation.
      *
-     * @param $id a car model generation identifier
+     * @param $id int Identifier of car model generation
      * @return \Illuminate\Support\Collection
      */
-    public function categorySpareParts($id)
+    public function categorySpareParts(int $id)
     {
         return $this->carService->getCategoriesByGenerationID($id);
     }
@@ -53,11 +71,11 @@ class CarsController extends JWTAuthApiController
     /**
      * Get spare parts by car model generation.
      *
-     * @param $generationID a car model generation identifier.
-     * @param Request $request
+     * @param $generationID int Identifier of car model generation
+     * @param Request $request request
      * @return \Illuminate\Support\Collection
      */
-    public function sparePartsByGeneration($generationID, Request $request)
+    public function sparePartsByGeneration(int $generationID, Request $request)
     {
         $params = [
             'generationID' => $generationID,

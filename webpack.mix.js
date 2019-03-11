@@ -47,6 +47,7 @@ mix.webpackConfig({
 });
 
 mix.js('resources/assets/js/app.js', 'public/assets/js')
+  .js('resources/assets/js/admin.js', 'public/assets/js')
   .sass('resources/assets/sass/app.scss', 'public/assets/styles')
   .copyDirectory('resources/assets/img', 'public/assets/img')
   .copyDirectory('resources/assets/fonts', 'public/assets/fonts')

@@ -7,10 +7,12 @@ use DB;
 class CarRepository
 {
     /**
-     * @param $id a car model generation identifier
+     * Get categories by generation ID.
+     *
+     * @param $id int Identifier of car model generation
      * @return \Illuminate\Support\Collection
      */
-    public function getCategoriesByGenerationID($id)
+    public function getCategoriesByGenerationID(int $id)
     {
         return DB::table('SparePartCategory AS spc')
             ->select([
@@ -28,14 +30,14 @@ class CarRepository
     /**
      * Get spare parts by car model generation.
      *
-     * @param array $params
+     * @param array $params params to filter
      *   params = [
      *     'generationID' => (int) a car model generation identifier. Required.
      *     'categoryID'   => (int) a spare parts category identifier.
      *   }
      * @return \Illuminate\Support\Collection
      */
-    public function getSparePartsByGeneration($params)
+    public function getSparePartsByGeneration(array $params)
     {
         $query =  DB::table('SpareParts AS sp')
             ->select('*')

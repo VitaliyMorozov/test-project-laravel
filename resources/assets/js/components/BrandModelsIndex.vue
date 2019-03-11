@@ -23,16 +23,15 @@
 
 <script>
   export default {
-    data: function () {
+    data() {
       return {
         models: [],
       };
     },
     mounted() {
-      let app = this;
-      let id = app.$route.params.id;
-      this.$http.get(`/api/models/${id}`).then(function(response) {
-        response.body.forEach(function(e) {
+      const app = this;
+      this.$http.get(`/api/models/${app.$route.params.id}`).then((response) => {
+        response.body.forEach((e) => {
           e.open = false;
           app.models.push(e);
         });
