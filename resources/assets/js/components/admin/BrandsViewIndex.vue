@@ -73,9 +73,9 @@
           text: 'Name',
           align: 'left',
           sortable: false,
-          value: 'brand'
+          value: 'brand',
         },
-        { text: 'Actions', value: 'name', sortable: false }
+        { text: 'Actions', value: 'name', sortable: false },
       ],
       brands: [],
       editedIndex: -1,
@@ -96,54 +96,46 @@
 
     computed: {
       formTitle() {
-        return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
-      }
+        return this.editedIndex === -1 ? 'New Item' : 'Edit Item';
+      },
     },
 
     watch: {
-      dialog(val) {
-        val || this.close();
+      dialog() {
+        this.close();
       },
     },
 
     created() {
-      this.initialize()
+      this.initialize();
     },
 
     methods: {
-      initialize () {
+      initialize() {
 
       },
       editItem(item) {
-        this.editedIndex = this.brands.indexOf(item)
-        this.editedItem = Object.assign({}, item)
-        this.dialog = true
-      },
-
-      deleteItem(item) {
-        const index = this.brands.indexOf(item)
-        confirm('Are you sure you want to delete this item?') && this.brands.splice(index, 1)
+        this.editedIndex = this.brands.indexOf(item);
+        this.editedItem = Object.assign({}, item);
+        this.dialog = true;
       },
 
       close() {
-        this.dialog = false
+        this.dialog = false;
         setTimeout(() => {
-          this.editedItem = Object.assign({}, this.defaultItem)
-          this.editedIndex = -1
-        }, 300)
+          this.editedItem = Object.assign({}, this.defaultItem);
+          this.editedIndex = -1;
+        }, 300);
       },
 
       save() {
         if (this.editedIndex > -1) {
           Object.assign(this.brands[this.editedIndex], this.editedItem);
-          this.$http.post('/api/brands').then((response) => {
-            alert(123)
-          });
         } else {
-          this.brands.push(this.editedItem)
+          this.brands.push(this.editedItem);
         }
-        this.close()
-      }
-    }
-  }
+        this.close();
+      },
+    },
+  };
 </script>
